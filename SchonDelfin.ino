@@ -71,7 +71,9 @@ void loop() {
     switch (rx) {
       case 'A':
         Serial.println("Playing file");
+        digitalWrite(statusPin, HIGH);
         musicPlayer.playFullFile("track001.mp3");
+        digitalWrite(statusPin, LOW);
         break;
     }
   }
