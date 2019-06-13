@@ -1,22 +1,18 @@
-# capTouchDelfin
+# Capacitive Touch Delfin
 
-## Teknologi:
+Projektet er resultatet af en række eksperminenter med at lave interaktive vægdekoration med capacitive touch teknologi.
+
+Vægdekorationen er en delfin, lavet med kobbertape, der afspiller lyde når den berøres. Den er sat op i Schön-bygningen.  
+
+Der anvendes følgende teknologi i installationen:
 - MP3 Codec Breakout
-- Arduino (Pro-Micro)
-- Kobber tape
+- Arduino Pro-Micro (kan erstattes af andre arduino boards)
+- Kobbertape (kan erstattes af et andet strømledende materiale)
 - Speaker
 - Prototyping board
-- Wires/Jumpercables
+- Ledninger/Jumpercables
+- LM386 forstærker chip (valgfri)
 
-Projektet handlede om at eksperimentere med hvordan man kan lave capacitive
-touch 'vægdekorationer' som er interaktive.
+Delfinen er opsat som et kredsløb der registrerer når det groundes, hvilket sker når man rører delfinen. Når dette registreres starter arduinoen afspilningen af en lydfil på mp3 breakout-boardet. Projektet kan uden problemer laves med andre strømlende materiale end kobbertape.
 
-Delfinen er opsat som et kredsløb der 'kortslutter' når der groundes, således
-at når man rører ved delfinen, eller fuldender forbindelsen, sendes der et signal
-til arduinoen som starter en lydfil. Hele projektet kan laves med andre strømledende
-genstande, hvis man vil arbejde med capacitive projekter.
-
-På prototyping boardet, er der loddet en LM386 forstærker chip sammen med pro microen
-og et MP3 Breakout board.
-
-Link til forstærker guide: [INDSÆT LINK]
+I projektet er der også brugt en LM386 forstærker chip, der sørger for at lyden, der afspilles af mp3 boardet lyder bedre. Denne kan udelades. Men hvis du er interesseret, kan du læse mere om, hvordan man anvender sådan en forstærker chip i [denne guide](https://github.com/DDlabAU/lm386-forstaerker-chip).
