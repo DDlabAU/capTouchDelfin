@@ -3,7 +3,7 @@
 #include <Adafruit_VS1053.h>
 #include <SD.h>
 
-//Dette er pin deffinitionen til mp3 breakoutboardet. 
+//Dette er pin deffinitionen til mp3 breakoutboardet.
 #define CLK 15
 #define MISO 14
 #define MOSI 16
@@ -14,7 +14,7 @@
 #define DREQ 3
 
 
-Adafruit_VS1053_FilePlayer musicPlayer = 
+Adafruit_VS1053_FilePlayer musicPlayer =
   Adafruit_VS1053_FilePlayer(BREAKOUT_RESET, BREAKOUT_CS, BREAKOUT_DCS, DREQ, CARDCS);
 
 //Denne variabel bruges til at bugteste koden
@@ -30,20 +30,19 @@ void setup() {
   SD.begin(CARDCS);
   Serial.println("Booted up");
 
-  //Dette kode starter MP3 boardet
-  musicPlayer.begin();
-  musicPlayer.setVolume(1,1);
 
+  //Dette kode starter MP3 boardet
   if (! musicPlayer.begin()) { // initialise the music player
      Serial.println(F("Couldn't find VS1053, do you have the right pins defined?"));
      while (1);
   }
+  musicPlayer.setVolume(1,1);
 
   //Dette kode initiererer pin 2 og 8 til at bruges som registrering af når man trykker på delfinen
   pinMode(2, INPUT_PULLUP);
   pinMode(controlPin, OUTPUT);
  }
- 
+
 void loop() {
   //Her læser programmet værdien på pin to. Den variabel bruges så til at tjekke om der er forbindelse
   int sensorVal = digitalRead(2);
@@ -68,6 +67,6 @@ void loop() {
       case 'A':
         musicPlayer.playFullFile("track001.mp3");
         break;
-    }  
+    }
   }
 }
