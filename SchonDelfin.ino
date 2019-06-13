@@ -27,8 +27,9 @@ int controlPin = 8;
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("Serial connection begun");
   SD.begin(CARDCS);
-  Serial.println("Booted up");
+  Serial.println("SD Card loaded");
 
 
   //Dette kode starter MP3 boardet
@@ -36,6 +37,7 @@ void setup() {
      Serial.println(F("Couldn't find VS1053, do you have the right pins defined?"));
      while (1);
   }
+  Serial.println("Music player begun");
   musicPlayer.setVolume(1,1);
 
   //Dette kode initiererer pin 2 og 8 til at bruges som registrering af når man trykker på delfinen
@@ -51,6 +53,7 @@ void loop() {
   //Hvis forbindelsen ikke findes så skruer mp3 boardet lyden ned så den "slukker"
   if(sensorVal == LOW){
     digitalWrite(controlPin, HIGH);
+    Serial.println("Playing file");
     musicPlayer.setVolume(1,1);
     musicPlayer.playFullFile("track001.mp3");
   }else{
@@ -61,10 +64,11 @@ void loop() {
   //Dette funktionssegment er til at debugge koden. Den er til at man kan skrive "A" i Serial monitoren, og få mp3 boardet til at spille. Dette er for at teste om lydfilen og mp3 boardet virker.
   if (Serial.available()>0) {
     rx = Serial.read();
-    Serial.println ("button pressed");
+    Serial.println("Input received");
 
     switch(rx) {
       case 'A':
+        Serial.println("Playing file");
         musicPlayer.playFullFile("track001.mp3");
         break;
     }
