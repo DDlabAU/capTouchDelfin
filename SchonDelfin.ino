@@ -13,7 +13,6 @@
 #define CARDCS 10
 #define DREQ 3
 
-
 Adafruit_VS1053_FilePlayer musicPlayer =
   Adafruit_VS1053_FilePlayer(BREAKOUT_RESET, BREAKOUT_CS, BREAKOUT_DCS, DREQ, CARDCS);
 
@@ -30,7 +29,6 @@ void setup() {
   Serial.println("Serial connection begun");
   SD.begin(CARDCS);
   Serial.println("SD Card loaded");
-
 
   //Dette kode starter MP3 boardet
   if (! musicPlayer.begin()) { // initialise the music player
@@ -51,22 +49,22 @@ void loop() {
 
   //Her er funktionen til hvis der er forbindelse. Læg mærke til at den søger efter en sensorVal == LOW. Det er fordi det er en pin_pullup funktion, så den kigger efter det omvendte.
   //Hvis forbindelsen ikke findes så skruer mp3 boardet lyden ned så den "slukker"
-  if(sensorVal == LOW){
+  if (sensorVal == LOW) {
     digitalWrite(controlPin, HIGH);
     Serial.println("Playing file");
     musicPlayer.setVolume(1,1);
     musicPlayer.playFullFile("track001.mp3");
-  }else{
+  } else {
     digitalWrite(controlPin, LOW);
     musicPlayer.setVolume(0,0);
   }
 
   //Dette funktionssegment er til at debugge koden. Den er til at man kan skrive "A" i Serial monitoren, og få mp3 boardet til at spille. Dette er for at teste om lydfilen og mp3 boardet virker.
-  if (Serial.available()>0) {
+  if (Serial.available() > 0) {
     rx = Serial.read();
     Serial.println("Input received");
 
-    switch(rx) {
+    switch (rx) {
       case 'A':
         Serial.println("Playing file");
         musicPlayer.playFullFile("track001.mp3");
