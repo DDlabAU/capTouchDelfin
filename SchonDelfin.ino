@@ -23,7 +23,7 @@ char rx;
 int sensorPin = 2;
 bool sensorValue = HIGH;
 // Her deklarerer og initialiserer vi en variabel vi kan bruge til at signalere status
-int controlPin = 8;
+int statusPin = 8;
 
 void setup() {
   Serial.begin(9600);
@@ -42,9 +42,9 @@ void setup() {
 
   // Her sætter vi pinMode
   // Vi bruger sensorPin som et input med en indbygget pullup-modstand. Vi kan bruge den til at aflæse en værdi, der som udgangspunkt vil være HIGH og bliver LOW når sensorPin groundes
-  // Vi bruger controlPin som et output som vi kan signalere med
+  // Vi bruger statusPin som et output som vi kan signalere med
   pinMode(sensorPin, INPUT_PULLUP);
-  pinMode(controlPin, OUTPUT);
+  pinMode(statusPin, OUTPUT);
  }
 
 void loop() {
@@ -54,12 +54,12 @@ void loop() {
   // Her er funktionen til hvis der er forbindelse mellem kobberstrimlen og en persen. Læg mærke til at den reagerer når sensorVal == LOW. Det er fordi vi har sat vores pinMode til INPUT_PULLUP på den pin, hvor vi har fobundet kobberstrimlen, hvilket betyder at logikken er omvendt.
   // Hvis der ikke findes en forbindelse skruer mp3 boardet lyden ned så den "slukker"
   if (sensorVal == LOW) {
-    digitalWrite(controlPin, HIGH);
+    digitalWrite(statusPin, HIGH);
     Serial.println("Playing file");
     musicPlayer.setVolume(1,1);
     musicPlayer.playFullFile("track001.mp3");
   } else {
-    digitalWrite(controlPin, LOW);
+    digitalWrite(statusPin, LOW);
     musicPlayer.setVolume(0,0);
   }
 
