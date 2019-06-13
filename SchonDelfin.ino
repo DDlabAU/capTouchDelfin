@@ -21,7 +21,7 @@ Adafruit_VS1053_FilePlayer musicPlayer =
 char rx;
 
 //Disse variabler refererer til de pins som kobberstrimlen læser
-int sensorPin =A0;
+int sensorPin = 2;
 int sensorValue = 0;
 int controlPin = 8;
 
@@ -39,13 +39,13 @@ void setup() {
   musicPlayer.setVolume(1,1);
 
   //Dette kode initiererer pin 2 og 8 til at bruges som registrering af når man trykker på delfinen
-  pinMode(2, INPUT_PULLUP);
+  pinMode(sensorPin, INPUT_PULLUP);
   pinMode(controlPin, OUTPUT);
  }
 
 void loop() {
   //Her læser programmet værdien på pin to. Den variabel bruges så til at tjekke om der er forbindelse
-  int sensorVal = digitalRead(2);
+  int sensorVal = digitalRead(sensorPin);
 
   //Her er funktionen til hvis der er forbindelse. Læg mærke til at den søger efter en sensorVal == LOW. Det er fordi det er en pin_pullup funktion, så den kigger efter det omvendte.
   //Hvis forbindelsen ikke findes så skruer mp3 boardet lyden ned så den "slukker"
