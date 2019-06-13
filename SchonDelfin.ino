@@ -27,7 +27,6 @@ int controlPin = 8;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("BOOTED UP BITCH");
   SD.begin(CARDCS);
   Serial.println("Booted up");
 
