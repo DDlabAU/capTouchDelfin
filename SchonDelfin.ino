@@ -4,6 +4,8 @@
 #include <SD.h>
 
 // Dette er pin-definitionerne til mp3 breakoutboardet.
+// Nedenstående pins passer til et pro-micro board. 
+// Anvender du et andet board skal du slå dette op og finde de korrekte pins på netop dit board.
 #define CLK 15
 #define MISO 14
 #define MOSI 16
