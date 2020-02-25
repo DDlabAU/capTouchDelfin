@@ -21,7 +21,7 @@ char rx;
 
 // Her deklarerer og initialiserer vi de variabler vi bruger til at aflæse kobberstrimlen
 int sensorPin = 2;
-bool sensorValue = HIGH;
+bool sensorVal = HIGH;
 // Her deklarerer og initialiserer vi en variabel vi kan bruge til at signalere status
 int statusPin = 8;
 
